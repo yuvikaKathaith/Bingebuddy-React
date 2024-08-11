@@ -2,7 +2,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="text-green-600 text-8xl">
+    <div className="text-black-600 text-8xl">
       NetflixGPT
     </div>
   );
