@@ -1,10 +1,8 @@
-import './App.css';
+import Body from './components/Body';
 
 function App() {
   return (
-    <div className="text-black-600 text-8xl">
-      NetflixGPT
-    </div>
+    <Body />
   );
 }
 
