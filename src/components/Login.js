@@ -1,30 +1,105 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Header from './Header'
 import Hero from './Hero'
+import { checkValidDataForSignIn, checkValidDataForSignUp } from '../utils/validate'
+import { auth } from '../utils/firebase'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth'
+import { useNavigate } from 'react-router-dom'
+import { addUser } from '../utils/userSlice'
+import { useDispatch } from 'react-redux'
+
+
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isSignInForm, isSetSignInForm] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const toggleSignInForm = () => {
     isSetSignInForm(!isSignInForm);
   };
+  const name = useRef(null);
+  const email = useRef(null);
+  const password = useRef(null);
 
+  const handleButtonClick = () => {
+    // validate the form data
+    let msg;
+    if (!isSignInForm) {
+      // When it's a sign-up form, include the name in the validation
+      msg = checkValidDataForSignUp(email.current.value, password.current.value, name.current.value);
+    } else {
+      // When it's a sign-in form, no need to include the name
+      msg = checkValidDataForSignIn(email.current.value, password.current.value);
+    }
+    
+    setErrorMessage(msg);
+
+    if(msg) return;
+
+    if(!isSignInForm){
+        //sign up 
+        createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+        .then((userCredential) => {
+          // Signed up 
+          const user = userCredential.user;
+          updateProfile(user, {
+            displayName: name.current.value, photoURL: "https://media.licdn.com/dms/image/v2/D5603AQExf32EaHCVcA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1712475666944?e=1730332800&v=beta&t=T-VOB-tUFJhUTxyHXwy35PQXEB4BRoIuE2Gool3H3OA"
+          }).then(() => {
+            // Profile updated!
+            const {uid, email, displayName, photoURL}  = auth.currentUser;
+            dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
+            navigate('/browse');
+
+          }).catch((error) => {
+            // An error occurred
+            setErrorMessage(error.message);
+
+          });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + '-' + errorMessage);
+        });
+    }
+    else{
+        //sign in logic
+        signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          console.log(user);
+          navigate('/browse');
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + '-' + errorMessage);
+        });
+    
+    }
+  }
   return (
     <div>
       <Header />
       <Hero />
-      <div className='absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white'>
+      <div className='absolute inset-0 overflow-hidden flex flex-col items-center justify-center bg-black bg-opacity-50 text-white'>
         <div className='mt-24 flex flex-col bg-black bg-opacity-70 w-[450px] h-[641px]'>
           <h1 className='text-white text-3xl font-bold mb-6 mt-12 ml-16'>{isSignInForm? "SignIn" : "SignUp" }</h1>
-          <form>
+          <form onSubmit={(e) => e.preventDefault()}>
               <div className='flex flex-col ml-14'>
                 {!isSignInForm? 
-                  <input type='text' placeholder='Full Name' className='p-2 m-2 w-[314px] h-[56px] bg-gray-800 bg-opacity-20 border border-white border-opacity-35 rounded-md' /> : ""
+                  <input ref={name} type='text' placeholder='Full Name' className='p-2 m-2 w-[314px] h-[56px] bg-gray-800 bg-opacity-20 border border-white border-opacity-35 rounded-md' /> : "" 
                 }
-                <input type='text' placeholder='Email or mobile address' className='p-2 m-2 w-[314px] h-[56px] bg-gray-800 bg-opacity-20 border border-white border-opacity-35 rounded-md' />
-                <input type='text' placeholder='Password' className='p-2 m-2 w-[314px] h-[56px] bg-gray-800 bg-opacity-20 border border-white border-opacity-35 rounded-md' />
+                <input ref={email} type='text' placeholder='Email or mobile address' className='p-2 m-2 w-[314px] h-[56px] bg-gray-800 bg-opacity-20 border border-white border-opacity-35 rounded-md' />
+                <input ref={password}  type='password' placeholder='Password' className='p-2 m-2 w-[314px] h-[56px] bg-gray-800 bg-opacity-20 border border-white border-opacity-35 rounded-md' />
               </div>
+              <p className='ml-16 text-red-600 font-bold'>{errorMessage}</p>
                 <div className='flex flex-col justify-center items-center'>
-                  <button className='bg-red-600 w-[314px] h-[39px] mr-2 rounded-md mt-2'>
+                  <button 
+                    className='bg-red-600 w-[314px] h-[39px] mr-2 rounded-md mt-2'
+                    onClick={handleButtonClick}>
                     {isSignInForm? 
                       "Sign In" : "Sign Up"
                     }
@@ -59,4 +134,4 @@ const Login = () => {
   )
 } 
 
-export default Login
+export default Login;

@@ -3,18 +3,27 @@
 
 - Create React App
 - Configured TailwindCSS
-- Header
-Login form
+- Header    
+- Login form
+- Sign Up form
+- Form Validation 
+- useRef hook 
+- firebase setup
+- deploying our app to production
+- create a signup user account
+- implement Sign In user api
+- Created redux store with user slice
+- implemented sign out
+- update profile
 
 # Features
 -Login/ Sign up
-    -Sign in/up form
-    -redirect to browse page
+    - Sign in/up form
+    - Redirect to browse page
 -Browse
-    - header
-    - main movie
-        -trailer
-        -title and description
-        - movie suggestions
-            -movie lsit
-
+    - Header
+    - Main Movie
+        - Trailer
+        - Title and description
+        - Movie suggestions
+            -Movie list
