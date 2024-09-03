@@ -4,14 +4,12 @@ import Hero from './Hero'
 import { checkValidDataForSignIn, checkValidDataForSignUp } from '../utils/validate'
 import { auth } from '../utils/firebase'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth'
-import { useNavigate } from 'react-router-dom'
 import { addUser } from '../utils/userSlice'
 import { useDispatch } from 'react-redux'
-
+import { Photo_Url } from '../utils/constants'
 
 const Login = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [isSignInForm, isSetSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -44,17 +42,14 @@ const Login = () => {
           // Signed up 
           const user = userCredential.user;
           updateProfile(user, {
-            displayName: name.current.value, photoURL: "https://media.licdn.com/dms/image/v2/D5603AQExf32EaHCVcA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1712475666944?e=1730332800&v=beta&t=T-VOB-tUFJhUTxyHXwy35PQXEB4BRoIuE2Gool3H3OA"
+            displayName: name.current.value, photoURL: Photo_Url
           }).then(() => {
             // Profile updated!
             const {uid, email, displayName, photoURL}  = auth.currentUser;
             dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
-            navigate('/browse');
-
           }).catch((error) => {
             // An error occurred
             setErrorMessage(error.message);
-
           });
         })
         .catch((error) => {
@@ -70,7 +65,6 @@ const Login = () => {
           // Signed in 
           const user = userCredential.user;
           console.log(user);
-          navigate('/browse');
         })
         .catch((error) => {
           const errorCode = error.code;

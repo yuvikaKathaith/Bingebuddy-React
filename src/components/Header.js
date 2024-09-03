@@ -3,24 +3,50 @@ import React from 'react'
 import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
+import { useDispatch } from 'react-redux'
+import { addUser, removeUser } from '../utils/userSlice';
+import { Logo_Url } from '../utils/constants';
 
 const Header = () => {
-  const user = useSelector((store) => store.user);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const user = useSelector((store) => store.user);
+  
   const handleSignOutButton = () => {
     signOut(auth).then(() => {
       // Sign-out successful.
-      navigate('/');
+      navigate('/')
     }).catch((error) => {
       // An error happened.
-      navigate('/error');
+      navigate('/error')
     });
   }
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user){
+        // User is signed in
+        const {uid, email, displayName, photoURL}  = user;
+        dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
+        navigate('/browse');
+      } else {
+        // User is signed out
+        dispatch(removeUser());
+        navigate('/');
+      }
+    });    
+    //unsubscribe when component unmounts
+    return () => unsubscribe();
+  }, []);
+
+
   return (
     <div className='absolute w-screen px-40 py-1.5 bg-gradient-to-b from-black z-10 flex flex-row justify-between'>
       <img
         className='w-48'
-        src='https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png' alt='logo'
+        src={Logo_Url} alt='logo'
       />      
       {user && (
           <div className='flex justify-evenly mt-4'>
@@ -28,7 +54,7 @@ const Header = () => {
               className='w-[40px] h-[40px]'
               src={user?.photoURL} alt='signed-in-logo' 
             />
-            <button onClick={handleSignOutButton} className='ml-4 mt-2 w-[80px] h-[30px] text-white font-bold text-[15px] rounded-md bg-red-600'>Sign Out</button>
+            <button onClick={handleSignOutButton} className='ml-4 mt-2 w-[80px] h-[30px] text-white font-bold text-[15px] rounded-md bg-red-600 hover:bg-opacity-80'>Sign Out</button>
           </div>
       )}
     </div>
