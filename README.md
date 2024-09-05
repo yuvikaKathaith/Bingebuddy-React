@@ -25,12 +25,15 @@
 - create movie slice
 - upadate store with trailer
 - embedded yt video
+- gpt search page
+- language change for gpt search bar
+-
 
 # Features
--Login/ Sign up
+- Login/ Sign up
     - Sign in/up form
     - Redirect to browse page
--Browse
+- Browse
     - Header
     - Main Movie
         - Trailer
