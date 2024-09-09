@@ -51,11 +51,10 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
 
-
   return (
     <div className='absolute w-screen px-40 py-1.5 bg-gradient-to-b from-black z-10 flex flex-row justify-between'>
       <img
-        className='w-48'
+        className='w-36 mt-1'
         src={Logo_Url} alt='logo'
       />      
       {user && (

@@ -1,23 +1,23 @@
 const lang = {
     English: {
         search: 'Search',
-        searchBarText: 'What would you like to watch today ?'
+        searchBarPlaceholder: 'What genre would you like to watch today?'
     },
     Hindi: {
         search: 'खोज',
-        searchBarText: 'आज आप क्या देखना चाहेंगे ?'
+        searchBarPlaceholder: 'आज आप कौन सी शैली देखना चाहेंगे?'
     },
     Japanese: {
         search: '検索',
-        searchBarText: '今日は何を見たいですか？'
+        searchBarPlaceholder: '今日はどのジャンルを見たいですか？'
     }, 
     French: {
         search: 'recherche',
-        searchBarText: 'Quaimeriez-vous regarder aujourdhui ?'
+        searchBarPlaceholder: 'Quel genre aimeriez-vous regarder aujourd’hui ?'
     }, 
     Italian: {
         search: 'ricerca',
-        searchBarText: 'Cosa ti piacerebbe guardare oggi ?'
+        searchBarPlaceholder: 'che genere ti piacerebbe guardare oggi?'
     }
 }
 export default lang;
