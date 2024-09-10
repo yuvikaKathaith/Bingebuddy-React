@@ -14,7 +14,6 @@ const GptSearchBar = () => {
     const groqSuggTmdbMovieSearch = async(movie) => {
       const data = await fetch('https://api.themoviedb.org/3/search/movie?query=' + movie + '&include_adult=false&language=en-US&page=1', API_options);
       const json = await data.json();
-      console.log(json.results);
       return json.results;
     }
 
@@ -42,8 +41,8 @@ const GptSearchBar = () => {
     }    
 
   return (
-    <div className='flex justify-center pt-42 absolute w-full h-full bg-black bg-opacity-5 flex-row'>
-        <div className='relative z-10 flex justify-center m-[15%] h-[70px] w-[950px] rounded-lg'>
+    <div className='flex md:justify-center pt-42 absolute w-full h-full bg-black bg-opacity-5 flex-row'>
+        <div className='relative z-10 flex md:justify-center md:m-[15%] h-[70px] w-[950px] rounded-lg flex-row ml-6'>
           <form 
             onSubmit={(e) => e.preventDefault()}
           >
@@ -51,10 +50,10 @@ const GptSearchBar = () => {
               ref={searchText}
               placeholder={lang[langKey].searchBarPlaceholder}
               type='text'
-              className='h-[50px] w-[700px] px-4 bg-black bg-opacity-90 text-white border border-white'
+              className='md:h-[50px] md:w-[700px] md:px-4 bg-black bg-opacity-90 md:text-white border border-white md:m-0 mt-[75%] w-[600px] text-[15px] h-10 justify-center px-4'
             />
-            <button
-              className='w-[200px] h-[50px] ml-4 text-white text-xl font-bold bg-red-600 hover:bg-opacity-80 rounded-sm'
+            <button 
+              className='md:w-[200px] md:h-[50px] md:ml-4 text-white md:text-xl font-bold bg-red-600 hover:bg-opacity-80 rounded-sm text-[15px] h-8 w-16 ml-60 mt-8'
               onClick={handleGPTSearchButtonClick}
             >
               {lang[langKey].search}

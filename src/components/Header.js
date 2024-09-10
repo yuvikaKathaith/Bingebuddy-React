@@ -52,13 +52,13 @@ const Header = () => {
   }, []);
 
   return (
-    <div className='absolute w-screen px-40 py-1.5 bg-gradient-to-b from-black z-10 flex flex-row justify-between'>
+    <div className='absolute mx-auto md:m-0 md:w-screen px-40 py-1.5 bg-gradient-to-b from-black z-10 flex md:flex-row justify-between flex-col ml-4 w-full'>
       <img
-        className='w-36 mt-1'
+        className='w-36 h-24 md:w-48 md:h-14 md:m-0 md:mt-2 mt-4'
         src={Logo_Url} alt='logo'
       />      
       {user && (
-          <div className='flex justify-evenly mt-4'>
+          <div className='flex justify-evenly mt-4 -ml-9'>
             {showGptSearch?
               <select
                 onChange={handleChangeOfLanguage}
@@ -75,15 +75,15 @@ const Header = () => {
             }
             <button 
               onClick={handleGptSearchButton}
-              className='ml-4 mr-3 mt-0.5 w-[100px] h-[35px] text-white font-bold text-[15px] rounded-md bg-purple-800 hover:bg-opacity-80'
+              className='ml-4 mr-3 mt-0.5 md:w-[100px] md:h-[35px] text-white font-bold md:text-[15px] rounded-md bg-purple-800 hover:bg-opacity-80 w-20 h-6 text-[12px]'
             >
             {showGptSearch? "Homepage" : "Gpt Search"}
             </button>
             <img
-              className='w-[40px] h-[40px]'
+              className='w-[40px] h-[40px] hidden md:inline-block'
               src={user?.photoURL} alt='signed-in-logo' 
             />
-            <button onClick={handleSignOutButton} className='ml-4 mt-1 w-[80px] h-[30px] text-white font-bold text-[15px] rounded-md bg-red-600 hover:bg-opacity-80'>Sign Out</button>
+            <button onClick={handleSignOutButton} className='ml-4 md:mt-1 md:w-[80px] md:h-[30px] text-white font-bold md:text-[15px] rounded-md bg-red-600 hover:bg-opacity-80 w-20 h-6 text-[12px]'>Sign Out</button>
           </div>
       )}
     </div>
