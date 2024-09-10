@@ -10,4 +10,4 @@ export const API_options = {
     },
 };
 export const POSTER_CDN_URL = 'https://image.tmdb.org/t/p/w500/';
-export const AI_KEY = process.env.REACT_APP_AI_KEY;
+export const AI_KEY = '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';
