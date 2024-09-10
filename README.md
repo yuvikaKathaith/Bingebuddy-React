@@ -1,42 +1,37 @@
+
 # BingeBuddy
-**rafce(react arrow function component export)
 
-- Create React App
-- Configured TailwindCSS
-- Header    
-- Login form
-- Sign Up form
-- Form Validation 
-- useRef hook 
-- firebase setup
-- deploying our app to production
-- create a signup user account
-- implement Sign In user api
-- Created redux store with user slice
-- implemented sign out
-- update profile
-- BugFix: sign up user displayName and profile picture update
-- Bugfix: if the user is not logged in redirect /browse to /(login) page and vice-versa
-- unsubscribed onAuthStateChanged callback
-- added constants for all the harcoded strings
-- fetched TMDB api -> now playing movies
-- created moviesSlice and updated the store
-- created custom hook for nowPlayingMovies
-- create movie slice
-- upadate store with trailer
-- embedded yt video
-- gpt search page
-- language change for gpt search bar
--
+BingeBuddy is a Netflix-inspired web app that allows users to explore the latest, trending movies and popular TV shows. 
+The app also features a unique recommendation system, allowing users to get movies based on your favorite genres, making it easy to find the perfect film for their mood.
 
-# Features
-- Login/ Sign up
-    - Sign in/up form
-    - Redirect to browse page
-- Browse
-    - Header
-    - Main Movie
-        - Trailer
-        - Title and description
-        - Movie suggestions
-            -Movie list
+## Features
+
+- **upcoming & Trending**: Browse the most popular and up-to-date movies and TV shows, fetched from the TMDB API.
+- **Genre-based Recommendations**: Get personalized movie suggestions by entering your preferred genres, powered by Qroq AI.
+- **Redux Toolkit for State Management**: Manage app state efficiently using Redux Toolkit. 
+  
+## Tech Stack
+
+- **React**: Frontend framework.
+- **Redux Toolkit**: State management library.
+- **Tailwind CSS**: CSS framework for responsive design.
+- **TMDB API**: To fetch the latest and trending movies and TV shows.
+- **Groq AI**: AI-based recommendation engine for genre-specific movie suggestions.
+- **Sign In/Sign Up**: Secure user authentication.
+- **Firebase**: Handling sign-up and log-in.
+
+## Setup
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/yuvikaKathaith/bingebuddy.git
+2. Install dependencies:
+    ```bash 
+    npm install
+3. Start the development server:
+    ```bash
+    npm start
+
+## Live at
+    https://bingebuddy-react.vercel.app
