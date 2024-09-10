@@ -1,4 +1,4 @@
-# Netflix GPT
+# BingeBuddy
 **rafce(react arrow function component export)
 
 - Create React App
