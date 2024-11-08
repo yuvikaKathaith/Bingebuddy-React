@@ -6,8 +6,8 @@ export const API_options = {
     headers: {
       accept: "application/json",
       Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMGE4ZWQzYTZjNmQyYzZiNjhlOTA5NTMwOGJiZTVhOSIsInN1YiI6IjY1Yzg3YjE5M2MzYWIwMDE2M2NlNzgzOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.zQLpKx2gPKnYFoJHwdHej_7agdV9z9HZ2LLzwlmHzEA" ,
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhNTZmOTJjZTJmYzQzZDVhMTRlOGU0NWQ4MjZhNTEwOSIsIm5iZiI6MTczMTA1MDQ2MC43NzIxNTE1LCJzdWIiOiI2NmQxOGU4OGE3OWRkYzVmYWM0NTU1YTgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.r34K7B8q3zBOiu6RkQ6b6ktYdZH_gupR9Vu9uuV0MPg" ,
     },
 };
 export const POSTER_CDN_URL = 'https://image.tmdb.org/t/p/w500/';
-export const AI_KEY = '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';
+export const AI_KEY = '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';
