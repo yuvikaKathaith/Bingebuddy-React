@@ -111,9 +111,8 @@ const Login = () => {
                     <h5
                       onClick ={toggleSignInForm} 
                       className='font-bold -ml-28 mt-3 cursor-pointer'>
-                      New to Netflix?
                       {isSignInForm?
-                         "Sign up now." : "Sign in now."
+                         "New to Netflix? Sign up now." : "Already a User? Sign in now."
                       }
                     </h5>
                   </div>
