@@ -9,8 +9,6 @@ The app also features a unique recommendation system, allowing users to get movi
 - **Upcoming & Trending**: Browse the most popular and up-to-date movies and TV shows, fetched from the TMDB API.
 - **Genre-based Recommendations**: Get personalized movie suggestions by entering your preferred genres, powered by Groq AI.
 - **Redux Toolkit for State Management**: Manage app state efficiently using Redux Toolkit.
-
-**Click 'Guest Login' to autofill test account credentials, then sign in to explore the app without signing up.**
   
 ## Tech Stack
 
@@ -21,6 +19,9 @@ The app also features a unique recommendation system, allowing users to get movi
 - **Groq AI**: AI-based recommendation engine for genre-specific movie suggestions.
 - **Sign In/Sign Up**: Secure user authentication.
 - **Firebase**: Handling sign-up and log-in.
+
+## Test
+Click 'Guest Login' to autofill test account credentials, then sign in to explore the app without signing up.
 
 ## Setup
 
