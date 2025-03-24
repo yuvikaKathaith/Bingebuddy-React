@@ -10,7 +10,7 @@ The app also features a unique recommendation system, allowing users to get movi
 - **Genre-based Recommendations**: Get personalized movie suggestions by entering your preferred genres, powered by Groq AI.
 - **Redux Toolkit for State Management**: Manage app state efficiently using Redux Toolkit.
 
-**Click 'Guest Login' to log in with a test account and explore the app without signing up
+**Click 'Guest Login' to log in with a test account and explore the app without signing up**
   
 ## Tech Stack
 
