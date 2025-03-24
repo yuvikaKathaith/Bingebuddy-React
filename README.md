@@ -21,7 +21,7 @@ The app also features a unique recommendation system, allowing users to get movi
 - **Firebase**: Handling sign-up and log-in.
 
 ## Test
-Click 'Guest Login' to autofill test account credentials, then sign in to explore the app without signing up.
+    Click 'Guest Login' to autofill test account credentials, then sign in to explore the app without signing up.
 
 ## Setup
 
