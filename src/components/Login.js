@@ -58,25 +58,24 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-screen bg-black bg-opacity-50 text-white">
+    <div>
       <Header />
       <Hero />
-      {/* Fixed Login Form */}
-      <div className='fixed inset-0 flex items-center justify-center'>
-        <div className='flex flex-col bg-black bg-opacity-70 w-[450px] h-[641px] p-6 rounded-lg'>
-          <h1 className='text-white text-3xl font-bold mb-6 text-center'>
+      <div className='absolute inset-0 overflow-hidden flex flex-col items-center justify-center bg-black bg-opacity-50 text-white'>
+        <div className='mt-24 flex flex-col bg-black bg-opacity-70 w-[450px] h-[641px]'>
+          <h1 className='text-white text-3xl font-bold mb-6 mt-12 ml-16'>
             {isSignInForm ? "Sign In" : "Sign Up"}
           </h1>
           <form onSubmit={(e) => e.preventDefault()}>
-            <div className='flex flex-col items-center'>
+            <div className='flex flex-col ml-14'>
               {!isSignInForm && (
                 <input ref={name} type='text' placeholder='Full Name' className='p-2 m-2 w-[314px] h-[56px] bg-gray-800 bg-opacity-20 border border-white border-opacity-35 rounded-md' />
               )}
               <input ref={email} type='text' placeholder='Email or mobile address' className='p-2 m-2 w-[314px] h-[56px] bg-gray-800 bg-opacity-20 border border-white border-opacity-35 rounded-md' />
               <input ref={password} type='password' placeholder='Password' className='p-2 m-2 w-[314px] h-[56px] bg-gray-800 bg-opacity-20 border border-white border-opacity-35 rounded-md' />
             </div>
-            <p className='text-red-600 font-bold text-center'>{errorMessage}</p>
-            <div className='flex flex-col items-center'>
+            <p className='ml-16 text-red-600 font-bold'>{errorMessage}</p>
+            <div className='flex flex-col justify-center items-center'>
               <button 
                 className='bg-red-600 w-[314px] h-[39px] rounded-md mt-2'
                 onClick={handleButtonClick}
@@ -105,13 +104,16 @@ const Login = () => {
               )}
 
               <h5 className='mt-4'>{isSignInForm ? "Forgot password?" : ""}</h5>
-              <div className='mt-6'>
-                <h5 onClick={toggleSignInForm} className='font-bold cursor-pointer text-center'>
+              <div className='flex flex-row mt-8'>
+                <h5 onClick={toggleSignInForm} className='font-bold -ml-28 mt-3 cursor-pointer'>
                   {isSignInForm ? "New to Netflix? Sign up now." : "Already a User? Sign in now."}
                 </h5>
               </div>
-              <h5 className='text-sm text-slate-500 mt-5 text-center'>
-                This page is protected by Google reCAPTCHA to ensure you're not a bot.
+              <h5 className='text-sm text-slate-500 mt-5 -ml-12'>
+                This page is protected by Google reCAPTCHA
+              </h5>
+              <h5 className='text-sm text-slate-500 mr-40'>
+                to ensure you're not a bot.
               </h5>
             </div>
           </form>
