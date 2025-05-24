@@ -5,3 +5,6 @@
 *{
     /* font-family: 'BebasNeue-Regular'; */
 }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
