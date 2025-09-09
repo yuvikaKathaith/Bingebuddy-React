@@ -7,7 +7,7 @@ const GptMovieSuggestions = () => {
     if(!groqApiSuggestions) return null;
     return (
         
-        <div className='text-white bg-black pt-[40%]'>
+        <div className='text-white bg-black pt-[30%]'>
             <div>
                 {groqApiSuggestions?.map((movieName, index) => <MovieList key={movieName} title={movieName} movies={tmdbSearchResults[index]} />)} 
             </div>
