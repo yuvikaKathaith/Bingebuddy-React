@@ -4,7 +4,7 @@ import Hero from './Hero'
 
 const GptSearch = () => {
   return (
-    <div>
+    <div className="max-w-screen">
         <Hero />
         <GptSearchBar />
         <GptMovieSuggestions />
