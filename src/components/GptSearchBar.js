@@ -27,7 +27,7 @@ const GptSearchBar = () => {
                 content: query,
               },
             ],
-            model: "llama3-70b-8192",
+            model: "llama-3.3-70b-versatile",
       });  
       // The Hangover, Superbad, Bridesmaids, Zombieland, Anchorman
       console.log(groqApiResults.choices[0]?.message?.content);
